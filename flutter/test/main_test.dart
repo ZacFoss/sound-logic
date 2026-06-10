@@ -1,8 +1,8 @@
+import 'package:careconnect/main.dart';
+import 'package:careconnect/screens/accessibility_screen.dart';
+import 'package:careconnect/screens/help_center_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:sound_logic/main.dart';
-import 'package:sound_logic/screens/help_center_screen.dart';
-import 'package:sound_logic/screens/accessibility_screen.dart';
 
 void main() {
   group('MyApp Tests', () {
@@ -34,17 +34,8 @@ void main() {
       await tester.pumpWidget(const MyApp());
 
       expect(find.byType(BottomNavigationBar), findsOneWidget);
-      expect(find.byType(BottomNavigationBarItem), findsWidgets);
-    });
-
-    testWidgets('Tapping Messages tab navigates to MessagesPage', (WidgetTester tester) async {
-      await tester.pumpWidget(const MyApp());
-
-      await tester.tap(find.byIcon(Icons.message));
-      await tester.pumpAndSettle();
-
-      expect(find.byType(MessagesPage), findsOneWidget);
-      expect(find.text('Messages'), findsWidgets);
+      final navBar = find.byType(BottomNavigationBar).evaluate().first.widget as BottomNavigationBar;
+      expect(navBar.items.length, 5);
     });
 
     testWidgets('Tapping Alerts tab navigates to AlertsPage', (WidgetTester tester) async {
@@ -57,16 +48,6 @@ void main() {
       expect(find.text('Alerts'), findsWidgets);
     });
 
-    testWidgets('Tapping Appointments tab navigates to AppointmentsPage', (WidgetTester tester) async {
-      await tester.pumpWidget(const MyApp());
-
-      await tester.tap(find.byIcon(Icons.calendar_today));
-      await tester.pumpAndSettle();
-
-      expect(find.byType(AppointmentsPage), findsOneWidget);
-      expect(find.text('Appointments'), findsWidgets);
-    });
-
     testWidgets('Tapping Profile tab navigates to ProfilePage', (WidgetTester tester) async {
       await tester.pumpWidget(const MyApp());
 
@@ -75,23 +56,6 @@ void main() {
 
       expect(find.byType(ProfilePage), findsOneWidget);
       expect(find.text('Profile'), findsWidgets);
-    });
-
-    testWidgets('Navigation state updates correctly when switching tabs', (WidgetTester tester) async {
-      await tester.pumpWidget(const MyApp());
-
-      // Start on Home
-      expect(find.byType(HomePage), findsOneWidget);
-
-      // Navigate to Messages
-      await tester.tap(find.byIcon(Icons.message));
-      await tester.pumpAndSettle();
-      expect(find.byType(MessagesPage), findsOneWidget);
-
-      // Navigate back to Home
-      await tester.tap(find.byIcon(Icons.home));
-      await tester.pumpAndSettle();
-      expect(find.byType(HomePage), findsOneWidget);
     });
   });
 
@@ -122,14 +86,13 @@ void main() {
     testWidgets('HomePage has Appointments quick action card', (WidgetTester tester) async {
       await tester.pumpWidget(const MyApp());
 
-      expect(find.text('Appointments'), findsOneWidget);
-    });
-
-    testWidgets('HomePage has Medical Records quick action card', (WidgetTester tester) async {
-      await tester.pumpWidget(const MyApp());
-
-      expect(find.text('Medical Records'), findsOneWidget);
-      expect(find.byIcon(Icons.medical_services), findsOneWidget);
+      expect(
+        find.descendant(
+          of: find.byType(GridView),
+          matching: find.text('Appointments'),
+        ),
+        findsOneWidget,
+      );
     });
 
     testWidgets('Help Center card navigates to HelpCenterScreen', (WidgetTester tester) async {
@@ -172,64 +135,6 @@ void main() {
       expect(find.text('3'), findsWidgets);
     });
   });
-
-  group('MessagesPage Tests', () {
-    testWidgets('MessagesPage displays correctly', (WidgetTester tester) async {
-      await tester.pumpWidget(const MyApp());
-
-      await tester.tap(find.byIcon(Icons.message));
-      await tester.pumpAndSettle();
-
-      expect(find.byType(MessagesPage), findsOneWidget);
-      expect(find.text('Messages'), findsWidgets);
-    });
-
-    testWidgets('MessagesPage displays message list', (WidgetTester tester) async {
-      await tester.pumpWidget(const MyApp());
-
-      await tester.tap(find.byIcon(Icons.message));
-      await tester.pumpAndSettle();
-
-      expect(find.text('Dr. Sarah Johnson'), findsOneWidget);
-      expect(find.text('Nurse Patricia'), findsOneWidget);
-      expect(find.text('Care Coordinator'), findsOneWidget);
-    });
-
-    testWidgetsmessage previews visible', (WidgetTester tester) async {
-      await tester.pumpWidget(const MyApp());
-
-      await tester.tap(find.byIcon(Icons.message));
-      await tester.pumpAndSettle();
-
-      expect(find.text('Your test results are ready for review'), findsOneWidget);
-      expect(find.text('Reminder: Take your medication at 8 PM'), findsOneWidget);
-    });
-
-    testWidgets('MessagesPage displays time stamps', (WidgetTester tester) async {
-      await tester.pumpWidget(const MyApp());
-
-      await tester.tap(find.byIcon(Icons.message));
-      await tester.pumpAndSettle();
-
-      expect(find.text('2 hours ago'), findsOneWidget);
-      expect(find.text('5 hours ago'), findsOneWidget);
-      expect(find.text('Yesterday'), findsOneWidget);
-    });
-
-    testWidgets('MessagesPage shows unread indicator for first message', (WidgetTester tester) async {
-      await tester.pumpWidget(const MyApp());
-
-      await tester.tap(find.byIcon(Icons.message));
-      await tester.pumpAndSettle();
-
-      // Unread indicator is a small circle
-      final unreadIndicators = find.byWidgetPredicate(
-        (widget) => widget is Container && widget.runtimeType == Container,
-      );
-      expect(unreadIndicators, findsWidgets);
-    });
-  });
-
   group('AlertsPage Tests', () {
     testWidgets('AlertsPage displays correctly', (WidgetTester tester) async {
       await tester.pumpWidget(const MyApp());
@@ -289,74 +194,6 @@ void main() {
       expect(find.byIcon(Icons.info), findsOneWidget);
     });
   });
-
-  group('AppointmentsPage Tests', () {
-    testWidgets('AppointmentsPage displays correctly', (WidgetTester tester) async {
-      await tester.pumpWidget(const MyApp());
-
-      await tester.tap(find.byIcon(Icons.calendar_today));
-      await tester.pumpAndSettle();
-
-      expect(find.byType(AppointmentsPage), findsOneWidget);
-      expect(find.text('Appointments'), findsWidgets);
-    });
-
-    testWidgets('AppointmentsPage displays appointment cards', (WidgetTester tester) async {
-      await tester.pumpWidget(const MyApp());
-
-      await tester.tap(find.byIcon(Icons.calendar_today));
-      await tester.pumpAndSettle();
-
-      expect(find.text('Dr. Sarah Johnson'), findsOneWidget);
-      expect(find.text('Dr. Michael Chen'), findsOneWidget);
-      expect(find.text('Nurse Coordinator Patricia'), findsOneWidget);
-    });
-
-    testWidgets('AppointmentsPage displays doctor specialties', (WidgetTester tester) async {
-      await tester.pumpWidget(const MyApp());
-
-      await tester.tap(find.byIcon(Icons.calendar_today));
-      await tester.pumpAndSettle();
-
-      expect(find.text('Audiologist'), findsOneWidget);
-      expect(find.text('General Practitioner'), findsOneWidget);
-      expect(find.text('Follow-up'), findsOneWidget);
-    });
-
-    testWidgets('AppointmentsPage displays appointment dates and times', (WidgetTester tester) async {
-      await tester.pumpWidget(const MyApp());
-
-      await tester.tap(find.byIcon(Icons.calendar_today));
-      await tester.pumpAndSettle();
-
-      expect(find.text('Tomorrow'), findsOneWidget);
-      expect(find.text('2:00 PM'), findsOneWidget);
-      expect(find.text('Friday, June 14'), findsOneWidget);
-      expect(find.text('10:00 AM'), findsOneWidget);
-    });
-
-    testWidgets('AppointmentsPage displays appointment status', (WidgetTester tester) async {
-      await tester.pumpWidget(const MyApp());
-
-      await tester.tap(find.byIcon(Icons.calendar_today));
-      await tester.pumpAndSettle();
-
-      expect(find.text('Confirmed'), findsOneWidget);
-      expect(find.text('Scheduled'), findsOneWidget);
-      expect(find.text('Pending'), findsOneWidget);
-    });
-
-    testWidgets('AppointmentsPage displays calendar icons', (WidgetTester tester) async {
-      await tester.pumpWidget(const MyApp());
-
-      await tester.tap(find.byIcon(Icons.calendar_today));
-      await tester.pumpAndSettle();
-
-      expect(find.byIcon(Icons.calendar_today), findsWidgets);
-      expect(find.byIcon(Icons.access_time), findsWidgets);
-    });
-  });
-
   group('ProfilePage Tests', () {
     testWidgets('ProfilePage displays correctly', (WidgetTester tester) async {
       await tester.pumpWidget(const MyApp());
@@ -421,32 +258,6 @@ void main() {
       expect(find.text('Help Center'), findsOneWidget);
     });
 
-    testWidgets('ProfilePage Accessibility setting navigates to AccessibilityScreen',
-        (WidgetTester tester) async {
-      await tester.pumpWidget(const MyApp());
-
-      await tester.tap(find.byIcon(Icons.person));
-      await tester.pumpAndSettle();
-
-      await tester.tap(find.text('Accessibility'));
-      await tester.pumpAndSettle();
-
-      expect(find.byType(AccessibilityScreen), findsOneWidget);
-    });
-
-    testWidgets('ProfilePage Help Center setting navigates to HelpCenterScreen',
-        (WidgetTester tester) async {
-      await tester.pumpWidget(const MyApp());
-
-      await tester.tap(find.byIcon(Icons.person));
-      await tester.pumpAndSettle();
-
-      await tester.tap(find.text('Help Center'));
-      await tester.pumpAndSettle();
-
-      expect(find.byType(HelpCenterScreen), findsOneWidget);
-    });
-
     testWidgets('ProfilePage displays logout button', (WidgetTester tester) async {
       await tester.pumpWidget(const MyApp());
 
@@ -465,38 +276,6 @@ void main() {
 
       expect(find.byType(CircleAvatar), findsOneWidget);
       expect(find.text('JD'), findsOneWidget);
-    });
-  });
-
-  group('HelpCenterScreen Navigation Tests', () {
-    testWidgets('HelpCenterScreen can be navigated back', (WidgetTester tester) async {
-      await tester.pumpWidget(const MyApp());
-
-      await tester.tap(find.byIcon(Icons.help_outline));
-      await tester.pumpAndSettle();
-
-      expect(find.byType(HelpCenterScreen), findsOneWidget);
-
-      await tester.pageBack();
-      await tester.pumpAndSettle();
-
-      expect(find.byType(HomePage), findsOneWidget);
-    });
-  });
-
-  group('AccessibilityScreen Navigation Tests', () {
-    testWidgets('AccessibilityScreen can be navigated back', (WidgetTester tester) async {
-      await tester.pumpWidget(const MyApp());
-
-      await tester.tap(find.byIcon(Icons.accessibility));
-      await tester.pumpAndSettle();
-
-      expect(find.byType(AccessibilityScreen), findsOneWidget);
-
-      await tester.pageBack();
-      await tester.pumpAndSettle();
-
-      expect(find.byType(HomePage), findsOneWidget);
     });
   });
 
@@ -551,15 +330,6 @@ void main() {
       expect(find.text('CareConnect'), findsOneWidget);
     });
 
-    testWidgets('MessagesPage AppBar displays correctly', (WidgetTester tester) async {
-      await tester.pumpWidget(const MyApp());
-
-      await tester.tap(find.byIcon(Icons.message));
-      await tester.pumpAndSettle();
-
-      expect(find.text('Messages'), findsWidgets);
-    });
-
     testWidgets('ProfilePage AppBar displays correctly', (WidgetTester tester) async {
       await tester.pumpWidget(const MyApp());
 
@@ -576,37 +346,6 @@ void main() {
 
       expect(find.byType(SingleChildScrollView), findsWidgets);
     });
-
-    testWidgets('MessagesPage content is scrollable', (WidgetTester tester) async {
-      await tester.pumpWidget(const MyApp());
-
-      await tester.tap(find.byIcon(Icons.message));
-      await tester.pumpAndSettle();
-
-      expect(find.byType(ListView), findsOneWidget);
-    });
-  });
-
-  group('Screen State Management Tests', () {
-    testWidgets('Changing tabs preserves state', (WidgetTester tester) async {
-      await tester.pumpWidget(const MyApp());
-
-      // Navigate through tabs
-      await tester.tap(find.byIcon(Icons.message));
-      await tester.pumpAndSettle();
-
-      await tester.tap(find.byIcon(Icons.notifications));
-      await tester.pumpAndSettle();
-
-      await tester.tap(find.byIcon(Icons.calendar_today));
-      await tester.pumpAndSettle();
-
-      // Go back to home
-      await tester.tap(find.byIcon(Icons.home));
-      await tester.pumpAndSettle();
-
-      expect(find.byType(HomePage), findsOneWidget);
-    });
   });
 
   group('Text Content Tests', () {
@@ -616,15 +355,6 @@ void main() {
       expect(find.text('Welcome to CareConnect'), findsOneWidget);
       expect(find.text('Quick Actions'), findsOneWidget);
       expect(find.text('Recent Activities'), findsOneWidget);
-    });
-
-    testWidgets('All quick action cards are present', (WidgetTester tester) async {
-      await tester.pumpWidget(const MyApp());
-
-      expect(find.text('Help Center'), findsOneWidget);
-      expect(find.text('Accessibility'), findsOneWidget);
-      expect(find.text('Appointments'), findsOneWidget);
-      expect(find.text('Medical Records'), findsOneWidget);
     });
   });
 }

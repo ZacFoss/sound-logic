@@ -131,12 +131,17 @@ class _AccessibilityScreenState extends State<AccessibilityScreen> {
                     ),
                   ),
                   SizedBox(width: 16),
-                  Expanded(
-                    child: Image.asset(
-                      'assets/accessibility_illustration.png',
-                      width: 100,
-                      height: 100,
-                      fit: BoxFit.contain,
+                  Container(
+                    width: 100,
+                    height: 100,
+                    decoration: BoxDecoration(
+                      color: const Color(0xFFD4E4F8),
+                      borderRadius: BorderRadius.circular(16),
+                    ),
+                    child: const Icon(
+                      Icons.accessibility_new,
+                      size: 56,
+                      color: Color(0xFF2D8659),
                     ),
                   ),
                 ],

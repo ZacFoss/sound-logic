@@ -113,10 +113,18 @@ class HelpCenterScreen extends StatelessWidget {
                     ),
                   ),
                   SizedBox(width: 16),
-                  Image.asset(
-                    'assets/support_illustration.png',
+                  Container(
                     width: 120,
                     height: 120,
+                    decoration: BoxDecoration(
+                      color: const Color(0xFFD4E8DC),
+                      borderRadius: BorderRadius.circular(16),
+                    ),
+                    child: const Icon(
+                      Icons.support_agent,
+                      size: 64,
+                      color: Color(0xFF2D8659),
+                    ),
                   ),
                 ],
               ),
