@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'screens/help_center_screen.dart';
+
 import 'screens/accessibility_screen.dart';
+import 'screens/help_center_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -20,7 +21,7 @@ class MyApp extends StatelessWidget {
         appBarTheme: const AppBarTheme(
           backgroundColor: Colors.white,
           elevation: 0,
-          iconThemeData: IconThemeData(color: Color(0xFF2D8659)),
+          iconTheme: IconThemeData(color: Color(0xFF2D8659)),
           titleTextStyle: TextStyle(
             color: Color(0xFF2D8659),
             fontSize: 18,
@@ -433,7 +434,7 @@ class MessagesPage extends StatelessWidget {
     return Container(
       color: unread ? Colors.grey[50] : Colors.white,
       padding: const EdgeInsets.all(12),
-      border: Border(bottom: BorderSide(color: Colors.grey[200]!)),
+      // border: Border(bottom: BorderSide(color: Colors.grey[200]!)),
       child: Row(
         children: [
           CircleAvatar(
