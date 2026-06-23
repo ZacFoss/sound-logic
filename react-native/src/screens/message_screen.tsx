@@ -1,5 +1,5 @@
-import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, FlatList, TextInput } from 'react-native';
+import React, { useEffect } from 'react';
+import { View, Text, StyleSheet, TouchableOpacity, FlatList, TextInput, AccessibilityInfo } from 'react-native';
 
 const messages = [
   { id: '1', name: 'Amy Johnson', role: 'Caregiver', message: 'Hi Sarah! Just a reminder about your appointment tomorrow at 10 AM.', time: '9:30 AM' },
@@ -15,6 +15,14 @@ type MessageItem = {
   role: string;
   message: string;
   time: string;
+};
+
+export const useScreenReader = (message: string, deps: any[] = []) => {
+  useEffect(() => {
+    if (message) {
+      AccessibilityInfo.announceForAccessibility(message);
+    }
+  }, deps);
 };
 
 export default function MessagesScreen() {

@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, ScrollView, AccessibilityInfo } from 'react-native';
 
 const background = '#EAF7F4';
 const accent = '#2BBFA5';
@@ -49,6 +49,14 @@ const appointments: Appointment[] = [
     group: 'Cancelled',
   },
 ];
+
+export const useScreenReader = (message: string, deps: any[] = []) => {
+  useEffect(() => {
+    if (message) {
+      AccessibilityInfo.announceForAccessibility(message);
+    }
+  }, deps);
+};
 
 export default function AppointmentsScreen() {
   const renderCard = (item: Appointment) => (
@@ -211,3 +219,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
 });
+function useEffect(arg0: () => void, deps: any[]) {
+  throw new Error('Function not implemented.');
+}
+

@@ -1,5 +1,5 @@
-import React from 'react';
-import { View, Text, StyleSheet, FlatList, TouchableOpacity, ScrollView } from 'react-native';
+import React, { useEffect } from 'react';
+import { View, Text, StyleSheet, FlatList, TouchableOpacity, ScrollView, AccessibilityInfo } from 'react-native';
 
 type AlertItem = {
   id: string;
@@ -44,6 +44,33 @@ const alerts: AlertItem[] = [
     dateGroup: 'Earlier',
   },
 ];
+
+interface AlertScreenProps {
+  visible: boolean;
+  message: string;
+}
+
+export const AlertScreen: React.FC<AlertScreenProps> = ({ visible, message }) => {
+  useEffect(() => {
+    if (visible && message) {
+      // Announces the alert to screen readers immediately
+      AccessibilityInfo.announceForAccessibility(message);
+    }
+  }, [visible, message]);
+
+  if (!visible) return null;
+
+  return (
+    <View
+      style={styles.container}
+      accessible
+      accessibilityRole="alert"
+      accessibilityLiveRegion="assertive"
+    >
+      <Text style={styles.type}>{message}</Text>
+    </View>
+  );
+};
 
 export default function AlertsScreen() {
   const renderItem = ({ item }: { item: AlertItem }) => (

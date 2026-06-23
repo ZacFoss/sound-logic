@@ -1,5 +1,5 @@
-import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, Image, ScrollView } from 'react-native';
+import React, { useEffect } from 'react';
+import { View, Text, StyleSheet, TouchableOpacity, Image, ScrollView, AccessibilityInfo } from 'react-native';
 
 const accent = '#2BBFA5';
 const background = '#EAF7F4';
@@ -59,6 +59,14 @@ export default function ProfileScreen() {
     </View>
   );
 }
+
+export const useScreenReader = (message: string, deps: any[] = []) => {
+  useEffect(() => {
+    if (message) {
+      AccessibilityInfo.announceForAccessibility(message);
+    }
+  }, deps);
+};
 
 type SectionProps = {
   title: string;
