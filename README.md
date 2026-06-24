@@ -24,3 +24,4 @@ We used AI tools to assist with accessibility implementation and testing. We rev
 Zac Foss
 Rashaad Bell
 Matthew Greer email:mgreer33@aol.com
+Minor Alteration by Rashaad Bell
