@@ -1,0 +1,123 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Accessibility — CareConnect</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="appbar">
+      <button class="icon-btn" aria-label="Open navigation menu"><span class="material-icons">menu</span></button>
+      <div class="title">
+        <div class="logo">CC</div>
+        <div class="app-name">CareConnect</div>
+      </div>
+      <div class="actions">
+        <div class="notifications">
+          <button class="icon-btn" aria-label="Notifications"><span class="material-icons">notifications_none</span></button>
+          <span class="badge">3</span>
+        </div>
+      </div>
+    </header>
+
+    <main class="container">
+      <section class="header-row">
+        <button class="back-btn" aria-label="Go back"><span class="material-icons">arrow_back</span></button>
+        <div class="header-text">
+          <h1>Accessibility</h1>
+          <p>Customize your experience to<br/>meet your needs.</p>
+        </div>
+        <div class="illustration" aria-hidden="true"><span class="material-icons">accessibility_new</span></div>
+      </section>
+
+      <h2>Display Settings</h2>
+
+      <div class="tile">
+        <div class="tile-left"><span class="material-icons">text_fields</span></div>
+        <div class="tile-body">
+          <div class="tile-title">Text Size</div>
+          <div class="tile-sub">Adjust the size of text throughout the app</div>
+        </div>
+        <div class="tile-right">
+          <select id="textSize">
+            <option>Small</option>
+            <option selected>Medium</option>
+            <option>Large</option>
+            <option>Extra Large</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="toggle" data-key="highContrast">
+        <div class="toggle-left"><span class="material-icons">brightness_4</span></div>
+        <div class="toggle-body">
+          <div class="toggle-title">High Contrast</div>
+          <div class="toggle-sub">Increase contrast for better visibility</div>
+        </div>
+        <div class="toggle-right">
+          <label class="switch"><input type="checkbox" id="highContrast" checked><span class="slider"></span></label>
+        </div>
+      </div>
+
+      <div class="toggle" data-key="darkMode">
+        <div class="toggle-left"><span class="material-icons">nights_stay</span></div>
+        <div class="toggle-body">
+          <div class="toggle-title">Dark Mode</div>
+          <div class="toggle-sub">Reduce eye strain in low light</div>
+        </div>
+        <div class="toggle-right">
+          <label class="switch"><input type="checkbox" id="darkMode"><span class="slider"></span></label>
+        </div>
+      </div>
+
+      <div class="toggle" data-key="colorEnhancement">
+        <div class="toggle-left"><span class="material-icons">palette</span></div>
+        <div class="toggle-body">
+          <div class="toggle-title">Color Enhancement</div>
+          <div class="toggle-sub">Improve color visibility</div>
+        </div>
+        <div class="toggle-right">
+          <label class="switch"><input type="checkbox" id="colorEnhancement" checked><span class="slider"></span></label>
+        </div>
+      </div>
+
+      <h2>Communication Preferences</h2>
+
+      <div class="toggle" data-key="voiceMessages">
+        <div class="toggle-left"><span class="material-icons">message</span></div>
+        <div class="toggle-body">
+          <div class="toggle-title">Voice Messages</div>
+          <div class="toggle-sub">Send and receive voice messages</div>
+        </div>
+        <div class="toggle-right">
+          <label class="switch"><input type="checkbox" id="voiceMessages" checked><span class="slider"></span></label>
+        </div>
+      </div>
+
+      <div class="support-card">
+        <div class="support-left"><span class="material-icons">help</span></div>
+        <div class="support-body">
+          <div class="support-title">Need help with accessibility?</div>
+          <div class="support-sub">Contact our support team for personalized assistance.</div>
+        </div>
+        <div class="support-right">
+          <button id="contactSupport" class="outline">Contact Support</button>
+        </div>
+      </div>
+
+    </main>
+
+    <nav class="bottom-nav">
+      <button class="nav-item"><span class="material-icons">home</span><span>Home</span></button>
+      <button class="nav-item"><span class="material-icons">message</span><span>Messages</span></button>
+      <button class="nav-item"><span class="material-icons">notifications</span><span>Alerts</span></button>
+      <button class="nav-item"><span class="material-icons">calendar_today</span><span>Appointments</span></button>
+      <button class="nav-item"><span class="material-icons">person</span><span>Profile</span></button>
+    </nav>
+
+    <script src="renderer.js"></script>
+  </body>
+</html>

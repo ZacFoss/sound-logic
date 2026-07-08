@@ -1,0 +1,89 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Help Center — CareConnect</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="appbar">
+      <button class="icon-btn" aria-label="Open navigation menu"><span class="material-icons">menu</span></button>
+      <div class="title">
+        <div class="logo">CC</div>
+        <div class="app-name">CareConnect</div>
+      </div>
+      <div class="actions">
+        <div class="notifications">
+          <button class="icon-btn" aria-label="Notifications"><span class="material-icons">notifications_none</span></button>
+          <span class="badge">3</span>
+        </div>
+      </div>
+    </header>
+
+    <main class="container">
+      <section class="header-row">
+        <div class="header-text">
+          <h1>Help Center</h1>
+          <p>Find answers and get the<br/>support you need.</p>
+        </div>
+        <div class="illustration" aria-hidden="true"><span class="material-icons">support_agent</span></div>
+      </section>
+
+      <div class="search">
+        <input id="searchInput" placeholder="How can we help you?" />
+      </div>
+
+      <div class="categories">
+        <button class="category"> <span class="material-icons">description_outlined</span><span>FAQs</span></button>
+        <button class="category"> <span class="material-icons">play_circle_outline</span><span>Video Guides</span></button>
+        <button class="category"> <span class="material-icons">library_books_outlined</span><span>User Guides</span></button>
+        <button class="category"> <span class="material-icons">lightbulb_outline</span><span>Tips & Tricks</span></button>
+        <button class="category"> <span class="material-icons">chat_bubble_outline</span><span>Contact Support</span></button>
+      </div>
+
+      <div class="section-header">
+        <h2>Popular Topics</h2>
+        <button class="link-btn" id="viewAll">View all &gt;</button>
+      </div>
+
+      <div class="topic-list">
+        <div class="topic"> <span class="material-icons">calendar_today</span><div><div class="t-title">Managing Appointments</div><div class="t-sub">Schedule, reschedule, or cancel your visits</div></div><span class="material-icons">chevron_right</span></div>
+        <div class="topic"> <span class="material-icons">notifications_active</span><div><div class="t-title">Alerts & Notifications</div><div class="t-sub">Manage your alerts and reminders</div></div><span class="material-icons">chevron_right</span></div>
+        <div class="topic"> <span class="material-icons">message</span><div><div class="t-title">Messaging</div><div class="t-sub">Send and receive messages with caregivers</div></div><span class="material-icons">chevron_right</span></div>
+        <div class="topic"> <span class="material-icons">person_outline</span><div><div class="t-title">Account & Profile</div><div class="t-sub">Update your information and preferences</div></div><span class="material-icons">chevron_right</span></div>
+      </div>
+
+      <div class="help-box">
+        <div>
+          <div class="h-title">Still need help?</div>
+          <div class="h-sub">Our support team is here for you.</div>
+        </div>
+        <div>
+          <button id="chatBtn" class="primary">Chat with Us</button>
+          <div class="contact">Call: (512) 555-CARE • Email: support@careconnect.com</div>
+        </div>
+      </div>
+
+      <h3>Featured Articles</h3>
+      <div class="articles">
+        <div class="card"><div class="img" style="background:#D4E8DC"></div><div class="card-body"><div class="card-title">How to set up<br/>notifications</div><div class="read">3 min read</div></div></div>
+        <div class="card"><div class="img" style="background:#E8D4F4"></div><div class="card-body"><div class="card-title">Joining a video<br/>appointment</div><div class="read">4 min read</div></div></div>
+        <div class="card"><div class="img" style="background:#D4E4F8"></div><div class="card-body"><div class="card-title">Managing your<br/>hearing devices</div><div class="read">5 min read</div></div></div>
+      </div>
+
+    </main>
+
+    <nav class="bottom-nav">
+      <button class="nav-item"><span class="material-icons">home</span><span>Home</span></button>
+      <button class="nav-item"><span class="material-icons">message</span><span>Messages</span></button>
+      <button class="nav-item"><span class="material-icons">notifications</span><span>Alerts</span></button>
+      <button class="nav-item"><span class="material-icons">calendar_today</span><span>Appointments</span></button>
+      <button class="nav-item"><span class="material-icons">person</span><span>Profile</span></button>
+    </nav>
+
+    <script src="renderer.js"></script>
+  </body>
+</html>

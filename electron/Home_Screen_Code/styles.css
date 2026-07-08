@@ -1,0 +1,23 @@
+* { box-sizing: border-box }
+body { font-family: -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; margin:0; color:#222 }
+.appbar { height:64px; display:flex; align-items:center; justify-content:space-between; padding:0 16px; background:#fff; border-bottom:1px solid #eee }
+.container { padding:16px; max-width:1100px; margin:0 auto }
+.greeting { display:flex; align-items:center; gap:12px }
+.avatar { width:80px; height:80px; border-radius:50%; background:linear-gradient(180deg,#E1BEE7,#D1C4E9); display:flex; align-items:center; justify-content:center; color:#6A1B9A; font-size:36px }
+.hello { font-size:24px; font-weight:700; color:#1B5E20 }
+.sub { color:#666 }
+.highlight { color:#2E7D32; font-weight:700 }
+.highlight.purple { color:#7C3AED }
+.edit { margin-left:auto; background:#8E24AA; color:#fff; border:none; width:40px; height:40px; border-radius:50%; cursor:pointer }
+.overview { display:flex; gap:12px; margin-top:12px }
+.card.small { flex:1; padding:16px; border-radius:12px; background:#f7fdf7; display:flex; flex-direction:column; align-items:center; gap:8px; text-align:center }
+.appointment { padding:16px; border-radius:12px; background:#fafafa; border:1px solid #eee; margin-top:16px }
+.appt-head { display:flex; gap:12px; align-items:center }
+.appt-title { font-weight:700 }
+.appt-time { color:#666 }
+.outline { background:white; border:1px solid #2E7D32; color:#2E7D32; padding:8px 12px; border-radius:20px; cursor:pointer }
+.grid { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-top:12px }
+.quick { background:#fff; border:1px solid #eee; border-radius:12px; padding:12px; display:flex; flex-direction:column; align-items:center; gap:8px; cursor:pointer }
+.help-row { display:flex; justify-content:space-between; align-items:center; padding:12px; border-radius:12px; background:#fff; border:1px solid #eee; margin-top:16px }
+.bottom-nav { position:fixed; left:0; right:0; bottom:0; height:64px; background:#fff; border-top:1px solid #eee; display:flex; justify-content:space-around; align-items:center }
+.nav-item { background:none; border:none; display:flex; flex-direction:column; align-items:center; gap:4px; font-size:12px; color:#666 }

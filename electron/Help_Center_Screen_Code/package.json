@@ -1,0 +1,11 @@
+{
+  "name": "help-center-screen",
+  "version": "0.1.0",
+  "description": "Desktop version of Help Center screen converted from Flutter",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "author": "ZacFoss",
+  "license": "MIT"
+}
