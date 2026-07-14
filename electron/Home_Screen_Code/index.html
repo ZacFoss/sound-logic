@@ -1,0 +1,78 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home — CareConnect</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="appbar">
+      <button class="icon-btn" aria-label="Open navigation menu"><span class="material-icons">menu</span></button>
+      <div class="title">
+        <img src="" alt="CareConnect logo" class="logo-img" />
+      </div>
+      <div class="actions">
+        <div class="notifications">
+          <button class="icon-btn" aria-label="Notifications"><span class="material-icons">notifications_none</span></button>
+          <span class="badge">3</span>
+        </div>
+      </div>
+    </header>
+
+    <main class="container">
+      <section class="greeting">
+        <div class="avatar" aria-hidden="true"><span class="material-icons">person</span></div>
+        <div class="greet-text">
+          <div class="hello">Hello, Sarah!</div>
+          <div class="sub">Welcome back. You have <span class="highlight">3 new alerts</span> and <span class="highlight purple">2 new messages</span></div>
+        </div>
+        <button class="edit"> <span class="material-icons">edit</span></button>
+      </section>
+
+      <h2>Today's Overview</h2>
+      <div class="overview">
+        <div class="card small"><span class="material-icons">notifications</span><div>Alerts<br/><strong>3 new</strong></div></div>
+        <div class="card small"><span class="material-icons">chat_bubble</span><div>Messages<br/><strong>2 new</strong></div></div>
+        <div class="card small"><span class="material-icons">calendar_today</span><div>Appointments<br/><strong>1 upcoming</strong></div></div>
+      </div>
+
+      <div class="appointment">
+        <div class="appt-head"><span class="material-icons">calendar_today</span><div><div class="appt-title">Hearing Check-Up</div><div class="appt-time">May 15, 2025 • 10:00 AM</div></div></div>
+        <div class="appt-location">Hearing Wellness Center</div>
+        <div class="appt-actions"><button class="outline">View Details</button></div>
+      </div>
+
+      <h3>Quick Access</h3>
+      <div class="grid">
+        <div class="quick"><span class="material-icons">chat_bubble</span><div>Messages</div></div>
+        <div class="quick"><span class="material-icons">notifications</span><div>Alerts & Reminders</div></div>
+        <div class="quick"><span class="material-icons">calendar_today</span><div>Appointments</div></div>
+        <div class="quick"><span class="material-icons">earbuds</span><div>Hearing Support</div></div>
+        <div class="quick"><span class="material-icons">accessibility</span><div>Accessibility</div></div>
+        <div class="quick"><span class="material-icons">person</span><div>Profile</div></div>
+      </div>
+
+      <div class="help-row">
+        <div>
+          <div class="help-title">Need help?</div>
+          <div class="help-sub">Contact your caregiver or access support resources.</div>
+        </div>
+        <span class="material-icons">chevron_right</span>
+      </div>
+
+    </main>
+
+    <nav class="bottom-nav">
+      <button class="nav-item"><span class="material-icons">home</span><span>Home</span></button>
+      <button class="nav-item"><span class="material-icons">chat_bubble</span><span>Messages</span></button>
+      <button class="nav-item"><span class="material-icons">notifications</span><span>Alerts</span></button>
+      <button class="nav-item"><span class="material-icons">calendar_today</span><span>Appointments</span></button>
+      <button class="nav-item"><span class="material-icons">person</span><span>Profile</span></button>
+    </nav>
+
+    <script src="renderer.js"></script>
+  </body>
+</html>

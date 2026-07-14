@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CareConnect — Getting Started Preferences (Screen 2 of 3)</title>
+  <style>
+    body { font-family: 'Segoe UI', sans-serif; background-color: #FAF8F4; color: #1A1A1A; margin: 0; display: flex; flex-direction: column; height: 100vh; }
+    .menu-bar { background-color: #1A1A1A; color: #FFF; display: flex; padding: 8px 16px; gap: 20px; font-size: 14px; }
+    .container { flex: 1; display: flex; justify-content: center; align-items: center; padding: 40px; }
+    .card { background: white; padding: 40px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); width: 100%; max-width: 550px; }
+    h2 { color: #1B6F4E; margin-top: 0; font-size: 28px; }
+    .form-group { margin-bottom: 25px; }
+    label { display: block; margin-bottom: 6px; font-weight: 600; font-size: 14px; }
+    .selector-group { display: flex; gap: 12px; margin-top: 6px; }
+    .selector-card { flex: 1; border: 2px solid #E0E0E0; padding: 12px; border-radius: 6px; text-align: center; cursor: pointer; background: #FFF; font-weight: 500; }
+    .selector-card[aria-checked="true"] { border-color: #1B6F4E; background-color: #E8F5E9; }
+    .selector-card:focus, .btn-submit:focus { outline: 2px solid #FAF8F4; outline-offset: -2px; box-shadow: 0 0 0 4px #1B6F4E; }
+    .btn-submit { width: 100%; background-color: #1B6F4E; color: white; border: none; padding: 12px; font-size: 16px; font-weight: bold; border-radius: 4px; cursor: pointer; margin-top: 10px; }
+  </style>
+</head>
+<body>
+  <div class="menu-bar"><div>File</div><div>Edit</div><div>View</div><div>Help</div></div>
+  <div class="container">
+    <div class="card">
+      <h2>Getting Started</h2>
+      <p style="color: #666; margin-bottom: 24px;">Step 2: Configure your preferred alert settings.</p>
+      <form onsubmit="return false;">
+        <div class="form-group">
+          <label id="comm-label">Preferred Communication Method</label>
+          <div class="selector-group" role="radiogroup" aria-labelledby="comm-label">
+            <div class="selector-card" role="radio" aria-checked="false" tabindex="0">Text Message</div>
+            <div class="selector-card" role="radio" aria-checked="true" tabindex="0">Visual Alerts</div>
+            <div class="selector-card" role="radio" aria-checked="false" tabindex="0">Vibration</div>
+          </div>
+        </div>
+        <button type="submit" class="btn-submit">Next: Setup Account Accessibility</button>
+      </form>
+    </div>
+  </div>
+</body>
+</html>
