@@ -1,0 +1,1 @@
+Added unit tests (Jest) for electron apps: Accessibility, Help Center, Home. Updated package.json in each app to include a test script and jest devDependency. Included jest.config.cjs and test files under test/ for each app.
