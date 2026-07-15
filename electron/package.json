@@ -36,6 +36,7 @@
     "electron-builder": "^24.13.3",
     "electron-vite": "^2.3.0",
     "eslint": "^8.57.0",
+    "jsdom": "^29.1.1",
     "prettier": "^3.3.2",
     "typescript": "^5.5.2",
     "vite": "^5.3.1",
@@ -55,13 +56,22 @@
     ],
     "mac": {
       "category": "public.app-category.healthcare-fitness",
-      "target": ["dmg", "zip"]
+      "target": [
+        "dmg",
+        "zip"
+      ]
     },
     "win": {
-      "target": ["nsis", "portable"]
+      "target": [
+        "nsis",
+        "portable"
+      ]
     },
     "linux": {
-      "target": ["AppImage", "deb"]
+      "target": [
+        "AppImage",
+        "deb"
+      ]
     },
     "nsis": {
       "oneClick": false,
