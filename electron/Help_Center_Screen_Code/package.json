@@ -4,8 +4,12 @@
   "description": "Desktop version of Help Center screen converted from Flutter",
   "main": "main.js",
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "test": "jest"
   },
   "author": "ZacFoss",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "jest": "^29.0.0"
+  }
 }
