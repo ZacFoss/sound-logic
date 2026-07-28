@@ -1,0 +1,58 @@
+.app-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.app-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.app-header h1 {
+  font-size: 3rem;
+  margin: 0 0 0.5rem 0;
+}
+
+.app-header p {
+  font-size: 1.1rem;
+  color: #888;
+  margin: 0;
+}
+
+.app-main {
+  display: grid;
+  gap: 2rem;
+}
+
+.welcome-section,
+.counter-section {
+  padding: 2rem;
+  border-radius: 12px;
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.welcome-section h2,
+.counter-section h2 {
+  margin-top: 0;
+}
+
+.counter {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+.counter button {
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+}
+
+code {
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-family: 'Courier New', monospace;
+}
