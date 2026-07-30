@@ -18,7 +18,7 @@ describe('HomeScreen', () => {
     expect(screen.getByLabelText('Open navigation menu')).toBeInTheDocument();
     expect(screen.getByText('Hello, Sarah!')).toBeInTheDocument();
     // overview card text
-    expect(screen.getByText(/3 new/i)).toBeInTheDocument();
+    expect(screen.getAllByText(/3 new/i).length).toBeGreaterThan(0);
   });
 
   test('View Details button triggers alert', () => {

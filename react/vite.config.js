@@ -12,11 +12,19 @@ export default defineConfig({
     sourcemap: false,
   },
   test: {
+    globals: true,
     environment: 'jsdom',
     include: ['**/*.test.js', '**/*.test.jsx', '**/*.test.tsx', '**/tests/*.test.js'],
     coverage: {
       provider: 'v8',
       include: ['src/**/*.{js,jsx,ts,tsx}'],
+      exclude: [
+        '**/main.tsx',
+        '**/vite-env.d.ts',
+        '**/__tests__/**',
+        '**/*.test.*',
+        'node_modules/**',
+      ],
     },
   },
 })
