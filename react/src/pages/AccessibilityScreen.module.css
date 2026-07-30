@@ -1,0 +1,78 @@
+:root{
+  --accent: #2D8659;
+  --muted: #666;
+  --bg: #fff;
+}
+
+/* Base layout */
+.page{ display:flex; flex-direction:column; min-height:100vh; background:var(--bg); }
+.appbar{ height:64px; display:flex; align-items:center; justify-content:space-between; padding:0 16px; border-bottom:1px solid #eee; background:#fff; }
+.iconBtn{ background:none; border:none; font-size:18px; cursor:pointer; }
+.title{ display:flex; align-items:center; gap:8px; }
+.logo{ width:32px; height:32px; background:var(--accent); color:#fff; display:flex; align-items:center; justify-content:center; border-radius:6px; font-weight:700; }
+.appName{ color:var(--accent); font-weight:600; }
+.actions{ position:relative; }
+.badge{ position:absolute; right:-8px; top:-8px; background:var(--accent); color:#fff; border-radius:50%; width:20px; height:20px; display:flex; align-items:center; justify-content:center; font-size:12px; }
+
+/* Main */
+.container{ max-width:1200px; margin:18px auto; padding:0 16px; width:100%; flex:1; }
+.headerRow{ display:flex; align-items:center; gap:16px; justify-content:space-between; }
+.backBtn{ background:none; border:none; font-size:20px; cursor:pointer; }
+.h1{ margin:0; color:var(--accent); font-size:28px; }
+.lead{ margin:6px 0 0; color:var(--muted); }
+
+/* Illustration */
+.illustration{ width:84px; height:84px; background:#D4E4F8; border-radius:12px; display:flex; align-items:center; justify-content:center; font-size:28px; color:var(--accent); }
+
+/* Sections */
+.section{ margin-top:20px; }
+.sectionTitle{ font-size:16px; margin:0 0 12px 0; color:#111; }
+
+/* Tile */
+.tile{ display:flex; align-items:center; gap:12px; padding:12px; border-radius:10px; background:#fafafa; border:1px solid #eee; }
+.tileLeft{ width:48px; height:48px; border-radius:8px; background:#D4E8DC; display:flex; align-items:center; justify-content:center; color:var(--accent); font-weight:bold; }
+.tileBody{ flex:1; }
+.tileTitle{ font-weight:600; }
+.tileSub{ color:var(--muted); font-size:13px; }
+.tileRight select{ padding:6px 8px; border-radius:6px; }
+
+/* Toggles & rows */
+.toggleRow{ display:flex; flex-direction:column; gap:12px; margin-top:12px; }
+.toggleLabel{ display:flex; align-items:center; gap:12px; justify-content:space-between; padding:12px; background:#fafafa; border:1px solid #eee; border-radius:10px; }
+.toggleIcon{ width:48px; height:48px; display:flex; align-items:center; justify-content:center; border-radius:8px; background:#E8F4F1; color:var(--accent); }
+.toggleBody{ flex:1; }
+.toggleTitle{ font-weight:600; }
+.toggleSub{ color:var(--muted); font-size:13px; }
+.toggleLabel input{ width:20px; height:20px; }
+
+/* Support card */
+.supportCard{ margin-top:14px; display:flex; justify-content:space-between; align-items:center; padding:12px; border-radius:12px; background:#F0F9F7; border:1px solid #D0E8E3; }
+.supportTitle{ font-weight:700; color:var(--accent); }
+.supportSub{ color:var(--muted); font-size:13px; }
+.outlineBtn{ background:#fff; border:1.5px solid var(--accent); color:var(--accent); padding:8px 12px; border-radius:20px; cursor:pointer; }
+
+/* Bottom navigation */
+.bottomNav{ height:64px; border-top:1px solid #eee; display:flex; justify-content:space-around; align-items:center; position:sticky; bottom:0; background:#fff; }
+
+/* Responsive breakpoints */
+/* Mobile: up to 375px (styles already compact) */
+@media (min-width: 376px){
+  /* slightly larger spacing for small screens */
+  .container{ margin:20px auto; }
+}
+
+/* Tablet */
+@media (min-width: 768px){
+  .headerRow{ align-items:flex-start; }
+  .illustration{ width:100px; height:100px; }
+  .container{ display:grid; grid-template-columns: 1fr 360px; gap:24px; align-items:start; }
+  .section{ grid-column:1 / span 1; }
+  .supportCard{ grid-column:2 / span 1; }
+  .toggleRow{ flex-direction:column; }
+}
+
+/* Desktop (1440 and up) */
+@media (min-width: 1440px){
+  .container{ max-width:1200px; grid-template-columns: 1fr 420px; }
+  .tileRight{ min-width:200px; }
+}

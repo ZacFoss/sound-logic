@@ -1,0 +1,56 @@
+:root{
+  --accent:#2E7D32;
+  --muted:#666;
+}
+
+/* Base */
+.page{ display:flex; flex-direction:column; min-height:100vh; background:#fff; }
+.appbar{ height:64px; display:flex; align-items:center; justify-content:space-between; padding:0 16px; border-bottom:1px solid #eee; }
+.title{ display:flex; align-items:center; gap:8px; }
+.logoImg{ height:40px; width:auto; }
+.container{ max-width:1200px; margin:18px auto; padding:0 16px; width:100%; }
+.greeting{ display:flex; align-items:center; gap:12px; margin-bottom:12px; }
+.avatar{ width:80px; height:80px; border-radius:50%; background:linear-gradient(180deg,#E1BEE7,#D1C4E9); display:flex; align-items:center; justify-content:center; color:#6A1B9A; font-size:36px; }
+.hello{ font-size:24px; font-weight:700; color:var(--accent); }
+.sub{ color:var(--muted); }
+.highlight{ color:var(--accent); font-weight:700; }
+.highlightPurple{ color:#7C3AED; font-weight:700; }
+.edit{ margin-left:auto; width:40px; height:40px; background:#8E24AA; color:#fff; border-radius:50%; border:none; cursor:pointer; }
+
+/* Overview */
+.overview{ display:flex; gap:12px; margin-top:12px; }
+.card{ flex:1; padding:16px; border-radius:12px; background:#f7fdf7; display:flex; flex-direction:column; align-items:center; gap:8px; text-align:center; }
+.cardIcon{ font-size:28px; }
+.cardTitle{ font-size:13px; font-weight:700; }
+
+/* Appointment */
+.appointment{ padding:16px; border-radius:12px; background:#fafafa; border:1px solid #eee; margin-top:16px; }
+.apptHead{ display:flex; gap:12px; align-items:center; }
+.apptIcon{ font-size:24px; }
+.apptTitle{ font-weight:700; }
+.apptTime{ color:var(--muted); }
+.outline{ background:#fff; border:1px solid var(--accent); color:var(--accent); padding:8px 12px; border-radius:20px; cursor:pointer; }
+
+/* Grid */
+.grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-top:12px; }
+.quick{ background:#fff; border:1px solid #eee; border-radius:12px; padding:12px; display:flex; flex-direction:column; align-items:center; gap:8px; cursor:pointer; }
+.quickIcon{ font-size:28px; }
+
+/* Help row */
+.helpRow{ display:flex; justify-content:space-between; align-items:center; padding:12px; border-radius:12px; background:#fff; border:1px solid #eee; margin-top:16px; }
+
+/* Bottom nav */
+.bottomNav{ height:64px; border-top:1px solid #eee; display:flex; justify-content:space-around; align-items:center; position:sticky; bottom:0; background:#fff; }
+
+/* Tablet */
+@media (min-width:768px){
+  .container{ display:grid; grid-template-columns: 1fr 360px; gap:24px; }
+  .overview{ grid-column:1 / span 1; }
+  .grid{ grid-column:1 / span 1; grid-template-columns:repeat(3,1fr); }
+}
+
+/* Desktop (wide) */
+@media (min-width:1440px){
+  .container{ max-width:1300px; grid-template-columns: 1fr 420px; }
+  .grid{ grid-template-columns:repeat(3,1fr); }
+}

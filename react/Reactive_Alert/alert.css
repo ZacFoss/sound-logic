@@ -1,0 +1,155 @@
+:root {
+  --green: #3bbf7c;
+  --green-soft: #e6f7ef;
+  --bg: #f5f7fb;
+  --text: #1f2933;
+  --muted: #6b7280;
+  --border: #e5e7eb;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+
+.app {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 250px;
+  background: #0f3b2e;
+  color: white;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+}
+
+.logo {
+  margin-bottom: 32px;
+}
+
+.nav-item {
+  padding: 10px;
+  border-radius: 8px;
+  opacity: 0.85;
+  cursor: pointer;
+}
+
+.nav-item.active,
+.nav-item:hover {
+  background: rgba(255,255,255,0.15);
+  opacity: 1;
+}
+
+.prefs-btn {
+  margin-top: auto;
+  padding: 10px;
+  border-radius: 999px;
+  background: white;
+  color: #0f3b2e;
+  border: none;
+  cursor: pointer;
+}
+
+/* Main content */
+.content {
+  flex: 1;
+  padding: 32px 40px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.subtitle {
+  color: var(--muted);
+}
+
+.badge {
+  background: var(--green-soft);
+  color: var(--green);
+  padding: 6px 12px;
+  border-radius: 999px;
+}
+
+/* Filters */
+.filter-bar {
+  display: flex;
+  gap: 8px;
+  margin: 20px 0;
+}
+
+.filter-btn {
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: white;
+  cursor: pointer;
+  color: var(--muted);
+}
+
+.filter-btn.active {
+  background: var(--green);
+  color: white;
+}
+
+/* Alerts */
+.section-title {
+  margin-bottom: 12px;
+}
+
+.alert-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.alert-card {
+  background: white;
+  border: 1px solid var(--border);
+  padding: 16px;
+  border-radius: 12px;
+}
+
+.alert-card.unread {
+  border-color: var(--green);
+  box-shadow: 0 0 0 1px rgba(59,191,124,0.2);
+}
+
+.alert-header {
+  display: flex;
+  justify-content: space-between;
+  color: var(--muted);
+}
+
+.alert-title {
+  margin: 6px 0;
+}
+
+.alert-details {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.mark-read {
+  margin-top: 10px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: var(--green-soft);
+  color: var(--green);
+  border: none;
+  cursor: pointer;
+}
+
+.empty {
+  text-align: center;
+  color: var(--muted);
+  padding: 20px;
+}
