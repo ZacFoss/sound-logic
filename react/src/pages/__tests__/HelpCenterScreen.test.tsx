@@ -3,9 +3,9 @@ import { render, screen, fireEvent } from '@testing-library/react';
 import HelpCenterScreen from '../HelpCenterScreen';
 
 describe('HelpCenterScreen', () => {
-  const alertSpy = jest.spyOn(window, 'alert').mockImplementation(() => {});
+  const alertSpy = vi.spyOn(window, 'alert').mockImplementation(() => {});
 
-  beforeEach(() => jest.clearAllMocks());
+  beforeEach(() => vi.clearAllMocks());
 
   test('renders header, categories and topics', () => {
     render(<HelpCenterScreen />);

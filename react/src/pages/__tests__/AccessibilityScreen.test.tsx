@@ -5,11 +5,11 @@ import AccessibilityScreen from '../AccessibilityScreen';
 const LS_KEY = 'cc_accessibility_settings';
 
 describe('AccessibilityScreen', () => {
-  const alertSpy = jest.spyOn(window, 'alert').mockImplementation(() => {});
+  const alertSpy = vi.spyOn(window, 'alert').mockImplementation(() => {});
 
   beforeEach(() => {
     localStorage.clear();
-    jest.clearAllMocks();
+    vi.clearAllMocks();
   });
 
   test('renders with default settings and toggles update localStorage', () => {
