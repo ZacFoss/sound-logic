@@ -1,60 +1,56 @@
 import React from 'react';
-import '@testing-library/jest-dom';
 import { render, screen, fireEvent } from '@testing-library/react';
-import { vi } from 'vitest';
 import AccessibilityScreen from '../AccessibilityScreen';
 
 const LS_KEY = 'cc_accessibility_settings';
 
 describe('AccessibilityScreen', () => {
+  const alertSpy = jest.spyOn(window, 'alert').mockImplementation(() => {});
+
   beforeEach(() => {
-    vi.restoreAllMocks();
     localStorage.clear();
-    // mock alert so clicks don't show real dialogs
-    // @ts-ignore
-    window.alert = vi.fn();
+    jest.clearAllMocks();
   });
 
-  test('renders headings and controls with default state', () => {
+  test('renders with default settings and toggles update localStorage', () => {
     render(<AccessibilityScreen />);
 
-    expect(screen.getByRole('banner')).toBeInTheDocument();
     expect(screen.getByRole('heading', { name: /Accessibility/i })).toBeInTheDocument();
 
+    // Check default checkbox states
+    const highContrast = screen.getByLabelText(/High Contrast/i).closest('label')?.querySelector('input');
+    const darkMode = screen.getByLabelText(/Dark Mode/i).closest('label')?.querySelector('input');
+    const colorEnhancement = screen.getByLabelText(/Color Enhancement/i).closest('label')?.querySelector('input');
+    const voiceMessages = screen.getByLabelText(/Voice Messages/i).closest('label')?.querySelector('input');
+
+    expect(highContrast).toBeChecked();
+    expect(darkMode).not.toBeChecked();
+    expect(colorEnhancement).toBeChecked();
+    expect(voiceMessages).toBeChecked();
+
+    // Change text size
     const select = screen.getByLabelText('Text size') as HTMLSelectElement;
-    expect(select).toBeInTheDocument();
-    expect(select.value).toBe('Medium');
+    fireEvent.change(select, { target: { value: 'Large' } });
+    const stored = JSON.parse(localStorage.getItem(LS_KEY) || '{}');
+    expect(stored.textSize).toBe('Large');
 
-    const highContrast = screen.getByRole('checkbox', { name: /High Contrast/i }) as HTMLInputElement;
-    expect(highContrast.checked).toBe(true);
+    // Toggle dark mode
+    fireEvent.click(darkMode!);
+    const stored2 = JSON.parse(localStorage.getItem(LS_KEY) || '{}');
+    expect(stored2.darkMode).toBe(true);
 
-    const darkMode = screen.getByRole('checkbox', { name: /Dark Mode/i }) as HTMLInputElement;
-    expect(darkMode.checked).toBe(false);
+    // Contact support button triggers alert
+    const contact = screen.getByText(/Contact Support/i);
+    fireEvent.click(contact);
+    expect(alertSpy).toHaveBeenCalledWith('Contacting support...');
   });
 
-  test('changing a control updates localStorage and state', () => {
-    const spy = vi.spyOn(Storage.prototype, 'setItem');
+  test('handles malformed localStorage gracefully and falls back to defaults', () => {
+    localStorage.setItem(LS_KEY, 'not-json');
     render(<AccessibilityScreen />);
 
-    const highContrast = screen.getByRole('checkbox', { name: /High Contrast/i }) as HTMLInputElement;
-    // toggle off
-    fireEvent.click(highContrast);
-    expect(highContrast.checked).toBe(false);
-
-    // effect writes to localStorage; check setItem was called
-    expect(spy).toHaveBeenCalled();
-    // ensure localStorage holds a JSON with the key
-    const raw = localStorage.getItem(LS_KEY);
-    expect(raw).toBeTruthy();
-    const parsed = raw ? JSON.parse(raw) : null;
-    expect(parsed).toHaveProperty('highContrast', false);
-  });
-
-  test('Contact Support button triggers alert', () => {
-    render(<AccessibilityScreen />);
-    const btn = screen.getByRole('button', { name: /Contact Support/i });
-    fireEvent.click(btn);
-    // @ts-ignore
-    expect(window.alert).toHaveBeenCalledWith('Contacting support...');
+    expect(screen.getByLabelText(/Text size/i)).toHaveValue('Medium');
+    const highContrast = screen.getByLabelText(/High Contrast/i).closest('label')?.querySelector('input');
+    expect(highContrast).toBeChecked();
   });
 });

@@ -1,33 +1,41 @@
 import React from 'react';
-import '@testing-library/jest-dom';
 import { render, screen, fireEvent } from '@testing-library/react';
-import { vi } from 'vitest';
 import HomeScreen from '../HomeScreen';
 
 describe('HomeScreen', () => {
+  const alertSpy = jest.spyOn(window, 'alert').mockImplementation(() => {});
+
   beforeEach(() => {
-    vi.restoreAllMocks();
-    // mock alert so clicks don't show real dialogs
-    // @ts-ignore
-    window.alert = vi.fn();
+    jest.clearAllMocks();
   });
 
-  test('renders header, greeting, and overview', () => {
+  test('renders greeting, overview and appointment details', () => {
     render(<HomeScreen />);
 
-    expect(screen.getByLabelText('Open navigation menu')).toBeInTheDocument();
     expect(screen.getByText('Hello, Sarah!')).toBeInTheDocument();
-    // overview card text
-    expect(screen.getAllByText(/3 new/i).length).toBeGreaterThan(0);
+    expect(screen.getByText("Today's Overview")).toBeInTheDocument();
+    expect(screen.getByText(/Hearing Check-Up/)).toBeInTheDocument();
+    expect(screen.getByText('Alerts')).toBeInTheDocument();
+    expect(screen.getByText('Messages')).toBeInTheDocument();
+    expect(screen.getByText('Appointments')).toBeInTheDocument();
+    expect(screen.getByText('Profile')).toBeInTheDocument();
   });
 
-  test('View Details button triggers alert', () => {
+  test('clicking view details triggers alert', () => {
     render(<HomeScreen />);
-
     const btn = screen.getByText('View Details');
     fireEvent.click(btn);
+    expect(alertSpy).toHaveBeenCalledWith('View Details');
+  });
 
-    // @ts-ignore
-    expect(window.alert).toHaveBeenCalledWith('View Details');
+  test('quick access buttons trigger alerts with labels', () => {
+    render(<HomeScreen />);
+    const messages = screen.getAllByText('Messages')[0];
+    fireEvent.click(messages);
+    expect(alertSpy).toHaveBeenCalledWith('Messages');
+
+    const alerts = screen.getAllByText('Alerts & Reminders')[0];
+    fireEvent.click(alerts);
+    expect(alertSpy).toHaveBeenCalledWith('Alerts & Reminders');
   });
 });
