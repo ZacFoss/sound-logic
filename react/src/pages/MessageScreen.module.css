@@ -1,15 +1,12 @@
-:root {
+.appShell {
   --bg: #f5f7fb;
   --sidebar-bg: #0f3b2e;
-  --accent: #3bbf7c;
+  --accent: #1a6b3c;
   --accent-soft: #e6f7ef;
   --text-main: #1f2933;
   --text-muted: #6b7280;
   --border-soft: #e5e7eb;
   --card-bg: #ffffff;
-}
-
-.appShell {
   display: flex;
   min-height: 100vh;
   background: var(--bg);

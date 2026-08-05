@@ -187,7 +187,7 @@ function MessageCard({ msg }: { msg: Message }) {
   return (
     <div className={`${styles.messageCard} ${msg.unread ? styles.messageUnread : ''}`}>
       <div className={styles.msgHeader}>
-        <h3 className={styles.msgName}>{msg.name}</h3>
+        <h2 className={styles.msgName}>{msg.name}</h2>
         <span className={styles.msgTime}>{msg.time}</span>
       </div>
       <p className={styles.msgRole}>{msg.role}</p>

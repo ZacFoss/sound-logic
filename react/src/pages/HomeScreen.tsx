@@ -14,7 +14,7 @@ const HomeScreen: React.FC = () => {
         <section className={styles.greeting}>
           <div className={styles.avatar} aria-hidden>👤</div>
           <div className={styles.greetText}>
-            <div className={styles.hello}>Hello, Sarah!</div>
+            <h1 className={styles.hello}>Hello, Sarah!</h1>
             <div className={styles.sub}>Welcome back. You have <span className={styles.highlight}>3 new alerts</span> and <span className={styles.highlightPurple}>2 new messages</span></div>
           </div>
           <button className={styles.edit} aria-label="Edit profile">✎</button>
@@ -39,7 +39,7 @@ const HomeScreen: React.FC = () => {
           <div className={styles.apptActions}><button className={styles.outline} onClick={() => alert('View Details')}>View Details</button></div>
         </div>
 
-        <h3>Quick Access</h3>
+        <h2>Quick Access</h2>
         <div className={styles.grid}>
           {[
             ['💬','Messages'],

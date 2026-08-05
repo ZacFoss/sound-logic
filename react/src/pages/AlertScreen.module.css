@@ -1,14 +1,11 @@
-:root {
-  --green: #3bbf7c;
+.appShell {
+  --green: #1a6b3c;
   --green-soft: #e6f7ef;
   --bg: #f5f7fb;
   --text: #1f2933;
   --muted: #6b7280;
   --border: #e5e7eb;
   --sidebar-bg: #0f3b2e;
-}
-
-.appShell {
   display: flex;
   min-height: 100vh;
   background: var(--bg);

@@ -1,11 +1,9 @@
-:root{
-  --accent: #2D8659;
+/* Base layout */
+.page{ display:flex; flex-direction:column; min-height:100vh; background:var(--bg);
+  --accent: #1a6b3c;
   --muted: #666;
   --bg: #fff;
 }
-
-/* Base layout */
-.page{ display:flex; flex-direction:column; min-height:100vh; background:var(--bg); }
 .appbar{ height:64px; display:flex; align-items:center; justify-content:space-between; padding:0 16px; border-bottom:1px solid #eee; background:#fff; }
 .iconBtn{ background:none; border:none; font-size:18px; cursor:pointer; }
 .title{ display:flex; align-items:center; gap:8px; }
@@ -32,7 +30,7 @@
 .tile{ display:flex; align-items:center; gap:12px; padding:12px; border-radius:10px; background:#fafafa; border:1px solid #eee; }
 .tileLeft{ width:48px; height:48px; border-radius:8px; background:#D4E8DC; display:flex; align-items:center; justify-content:center; color:var(--accent); font-weight:bold; }
 .tileBody{ flex:1; }
-.tileTitle{ font-weight:600; }
+.tileTitle{ font-weight:600; color:#1a1a1a; }
 .tileSub{ color:var(--muted); font-size:13px; }
 .tileRight select{ padding:6px 8px; border-radius:6px; }
 
@@ -41,7 +39,7 @@
 .toggleLabel{ display:flex; align-items:center; gap:12px; justify-content:space-between; padding:12px; background:#fafafa; border:1px solid #eee; border-radius:10px; }
 .toggleIcon{ width:48px; height:48px; display:flex; align-items:center; justify-content:center; border-radius:8px; background:#E8F4F1; color:var(--accent); }
 .toggleBody{ flex:1; }
-.toggleTitle{ font-weight:600; }
+.toggleTitle{ font-weight:600; color:#1a1a1a; }
 .toggleSub{ color:var(--muted); font-size:13px; }
 .toggleLabel input{ width:20px; height:20px; }
 
@@ -53,6 +51,7 @@
 
 /* Bottom navigation */
 .bottomNav{ height:64px; border-top:1px solid #eee; display:flex; justify-content:space-around; align-items:center; position:sticky; bottom:0; background:#fff; }
+.navItem{ background:#fff; color:#1a1a1a; border:none; }
 
 /* Responsive breakpoints */
 /* Mobile: up to 375px (styles already compact) */
